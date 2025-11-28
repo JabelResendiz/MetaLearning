@@ -42,7 +42,7 @@ Utilizaremos datasets de [OpenML](https://www.openml.org/), una plataforma abier
 - **optuna/hyperopt**: Para optimización de hiperparámetros
 - **meta-learn**: Librerías especializadas en meta-learning (si aplica)
 
-## 📁 Estructura del Proyecto
+## 📁 Estructura del Proyecto (versión inicial)
 
 ```
 MetaLearning-/
@@ -65,7 +65,7 @@ MetaLearning-/
 ├── experiments/
 │   └── results/          # Resultados de experimentos
 └── docs/
-    └── papers/           # Papers y referencias relevantes
+    ├── state_of_the_art/  # Estado del arte 
 ```
 
 ## 🚀 Instalación

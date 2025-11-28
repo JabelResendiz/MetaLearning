@@ -60,3 +60,7 @@ Thumbs.db
 
 
 LICENSE
+docs/state_of_the_art/README.md
+src/evaluation.py
+src/meta_learner.py
+src/meta_features.py
