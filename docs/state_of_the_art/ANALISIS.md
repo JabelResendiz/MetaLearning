@@ -154,18 +154,28 @@ El documento está organizado en **4 secciones principales**:
 - ✅ Combinar con búsqueda de hiperparámetros
 
 #### 3.4. Meta-Models
-**Concepto:** Modelos que aprenden la relación entre meta-features y rendimiento de configuraciones.
+
+**Concepto:** Modelos que aprenden la relación entre meta-features y rendimiento de configuraciones. Se trata de construir un meta-modelo L que recomiende las configuraciones mas utiles dadas los meta-features M de la nueva tarea.
+
+**Referencias** para la construccion de meta-modelos para:
+- seleccion de algoritmos (Bensusan & Giraud-Carrier, 2000; Pfahringer et al., 2000; Kalousis, 2002; Bischl et al., 2016),
+- recomendacion de hiperparametro (Kuba et al., 2002; Soares et al., 2004; Ali & Smith-Miles, 2006b; Nisioti et al., 2018).
+
+Los experimentos muestran que los **árboles potenciados (boosted)** y los **árboles embolsados (bagged)** a menudo producen las mejores predicciones, aunque mucho depende del conjunto exacto de meta-features utilizado (Kalousis & Hilario, 2001; Köpf & Iglezakis, 2002).
 
 **Tipos:**
 
 1. **Ranking:**
-   - Predecir ranking de algoritmos
-   - k-NN meta-models
-   - Predictive clustering trees
-   - ART Forests (Approximate Ranking Trees)
+   - Los meta-modelos puede generar un ranking de las K configuraciones mas prometedoras.
+   - Enfoque : k-NN meta-models para predecir que tareas son similares y luego ordenar las mejores configuraciones utilizadas en esas tareas similares (Brazdil et al., 2003b; dos Santos et al., 2004).
+   - Predictive clustering trees (Todorovski et al., 2002),
+   - Label Ranking Tree (Cheng et al., 2009).
+   - ART Forests (Approximate Ranking Trees)(Sun & Pfahringer, 2013) son ensambles de arboles de ranking rapidos, que resultan efectivos porque incluyen seleccion de meta-features incorporadas, funcionana bien incluso si hay pocas tareas previas y el ensamble vuelve el metodo mas robusto.
+   - AutoBagging (Pinto et al., 2017) ordena el pipeline de Baggging usando un ranker basado en XGBoost , entrenado en 140 datasets de OpenML y 146 meta-features.
+   - Lorena et al. (2018) recomiendan configuraciones de SVM para regresión usando un meta-modelo kNN y un nuevo conjunto de meta-características basadas en complejidad de datos.
 
 2. **Performance Prediction:**
-   - Predecir directamente el rendimiento (accuracy, tiempo)
+   - los meta-modelos tambien pueden predecir directamente el rendimiento (accuracy, tiempo) de una config en una tarea dada a partir de sus meta-features. Permite evaluar si una config vale la pena o no.
    - SVM meta-regressors
    - MultiLayer Perceptrons
 
